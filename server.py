@@ -9,10 +9,8 @@ redis = Redis(host='redis', port=6379)
 
 
 @app.route('/')
-def hello_world(): 
-  result = redis.get('123')
-  print(result.decode('utf-8'))
-  return f'Working!!! and this is the result: {result}'
+def root(): 
+  return 'Working!'
 
 @app.route('/<code>')
 def get_code (code): 
