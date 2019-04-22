@@ -7,9 +7,10 @@ RUN mkdir /usr/src/url-shortener-python
 
 WORKDIR /usr/src/url-shortener-python
 
-COPY ./ ./
-
+COPY ./requirements.txt ./
 RUN pip install -r requirements.txt
 
+COPY ./ ./
+
 ENTRYPOINT ["flask"]
-CMD ["run", "--host=0.0.0.0"]
+CMD ["run", "--host=0.0.0.0"] 
