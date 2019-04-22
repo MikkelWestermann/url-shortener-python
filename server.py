@@ -27,8 +27,10 @@ def create_tiny():
       safety = 0
       while safety < 10: 
         url_code = ''.join(random.SystemRandom().choice(string.ascii_letters + string.digits) for _ in range(5))
-        redis.set(url_code, url, duration)
+        if not redis.exists(url_code): 
+          redis.set(url_code, url, duration)
+          return url_code 
         safety += 1 
-      return url_code 
+      return 'Could not add link'
     else: 
       return 'not a valid url'
