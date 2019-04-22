@@ -25,7 +25,7 @@ def create_tiny():
     url, duration = request.get_json().values()
     if re.match("^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$", url): 
       safety = 0
-      while safety < 1: 
+      while safety < 10: 
         url_code = ''.join(random.SystemRandom().choice(string.ascii_letters + string.digits) for _ in range(5))
         redis.set(url_code, url, duration)
         safety += 1 
