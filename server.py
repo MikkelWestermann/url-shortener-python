@@ -29,8 +29,7 @@ def create_tiny():
       safety = 0
       while safety < 1: 
         url_code = ''.join(random.SystemRandom().choice(string.ascii_letters + string.digits) for _ in range(5))
-        print(url_code)
-        redis.set(url_code, url)
+        redis.set(url_code, url, duration)
         safety += 1 
       return url_code 
     else: 
